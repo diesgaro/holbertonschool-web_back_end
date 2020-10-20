@@ -5,7 +5,7 @@
 
 
 import asyncio
-import bisect
+# import bisect
 from typing import List
 
 wait_random = __import__('0-basic_async_syntax').wait_random
@@ -18,8 +18,8 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
     lst: List[float] = []
     i: int = 0
     while i < n:
-        bisect.insort(lst, await wait_random(max_delay))
-        # lst.append(await wait_random(max_delay))
+        # bisect.insort(lst, await wait_random(max_delay))
+        lst.append(await wait_random(max_delay))
         i += 1
 
-    return lst
+    return sorted(lst)
