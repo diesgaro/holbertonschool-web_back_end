@@ -15,7 +15,6 @@ def to_kv(k: str, v: Union[int, float]) -> Tuple[str, float]:
         Arguments:
             k (str): A string argument
             v (int/float): a Integer or Float argument
-            
 
         Return:
             Tuple: a tuple with the result
