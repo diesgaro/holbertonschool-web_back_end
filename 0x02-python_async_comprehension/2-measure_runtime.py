@@ -14,12 +14,9 @@ async def measure_runtime() -> float:
     Coroutine that will execute async_comprehension four times in parallel
     and return the total runtime
     '''
-
     start = time.time()
 
-    await asyncio.gather(
-        *[async_comprehension() for n in range(4)]
-    )
+    await asyncio.gather(*[async_comprehension() for n in range(4)])
 
     end = time.time()
 
