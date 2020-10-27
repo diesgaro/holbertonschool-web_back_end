@@ -16,6 +16,7 @@ class FIFOCache(BaseCaching):
         method initializer/constructor
         """
         super().__init__()
+        self.Queue = list()
 
     def put(self, key, item):
         """
@@ -25,9 +26,11 @@ class FIFOCache(BaseCaching):
             if key in self.cache_data:
                 self.cache_data[key] = item
             else:
-                if (len(self.cache_data) >= BaseCaching.MAX_ITEMS):
-                    print("DISCARD: {}".format(next(iter(self.cache_data))))
-                    del self.cache_data[next(iter(self.cache_data))]
+                if (len(self.cache_data) == self.MAX_ITEMS):
+                    print("DISCARD: {}".format(self.Queue[0]))
+                    del self.cache_data[self.Queue[0]]
+                    del self.Queue[0]
+                self.Queue.append(key)
                 self.cache_data[key] = item
 
     def get(self, key):
